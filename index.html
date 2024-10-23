@@ -77,14 +77,7 @@
             <button id="btn-register" type="button" class="btn btn-primary">
               Register
             </button>
-            <button
-              id="btn-view"
-              type="button"
-              class="btn btn-primary"
-              onclick="navigateToPage('view-student')"
-            >
-              View Student
-            </button>
+            <button id="btn-view" type="button" class="btn btn-primary" onclick="document.location='view-student.html'">View Student</button>
           </div>
         </div>
       </div>
@@ -104,19 +97,5 @@
       });
     </script>
 
-    <button id="fetchDataBtn">Get Student Data</button>
-
-    <script>
-      document
-        .getElementById("fetchDataBtn")
-        .addEventListener("click", function () {
-          fetch("http://localhost:8080/student")
-            .then((response) => response.json())
-            .then((data) => {
-              console.log(data);
-            })
-            .catch((error) => console.error("Error:", error));
-        });
-    </script>
   </body>
 </html>
