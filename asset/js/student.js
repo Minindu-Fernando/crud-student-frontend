@@ -17,7 +17,7 @@ document.getElementById("loadStudentBtn").addEventListener("click", function() {
             <td>${student.gurdianContact}</td>
              <td>
           <button class="btn btn-warning btn-sm" onclick="editStudent(${student.id})">Edit</button>
-          <button class="btn btn-danger btn-sm" onclick="deleteStudent(${student.studentContact})">Delete</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteStudent('${student.studentContact}')">Delete</button>
         </td>
           `;
           tbody.appendChild(row);
@@ -25,3 +25,16 @@ document.getElementById("loadStudentBtn").addEventListener("click", function() {
       })
       .catch(error => console.error("Error fetching student data:", error));
   });
+
+  function deleteStudent(studentContact) {
+    if (confirm("Are you sure you want to delete this student?")) {
+      fetch(`http://localhost:8080/student/${studentContact}`, {
+        method: "DELETE"
+      })
+      .then(() => {
+        alert("Student deleted successfully");
+        location.reload(); 
+      })
+      .catch(error => console.error("Error deleting student:", error));
+    }
+  }
